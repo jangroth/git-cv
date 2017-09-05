@@ -1,0 +1,6 @@
+language: python
+  - "3.5"
+install:
+  - "pip3 install -r requirements.txt"
+script:
+  - "python3 tests/test_gitcv.py"
