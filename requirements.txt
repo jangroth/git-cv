@@ -1,1 +1,12 @@
+certifi==2017.7.27.1
+chardet==3.0.4
+configobj==5.0.6
+gitdb2==2.0.2
+GitPython==2.1.5
+idna==2.6
 PyYAML==3.12
+repo==0.1.0
+requests==2.18.4
+six==1.10.0
+smmap2==2.0.3
+urllib3==1.22
