@@ -7,7 +7,7 @@ class GitCv:
 
     def _load_cv(self, cv_path):
         with open(cv_path, "r") as f:
-            cv = yaml.load_all(f)
+            cv = yaml.load(f)
         return cv
 
     def render(self, cv_path):

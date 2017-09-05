@@ -11,7 +11,8 @@ class GitcvTest(unittest.TestCase):
         # exercise
         cv = gitcv._cv
 
-        self.assertEqual(cv['foo'], 'bar')
+        # verify
+        self.assertEqual(cv['streams'][0]['edu'][0]['year'], 2001)
 
 
 if __name__ == '__main__':

@@ -1,2 +1,7 @@
 ---
-foo: bar
+streams:
+  - edu:
+      -
+        year: 2001
+        where: university of springfield
+        what: master of computer science

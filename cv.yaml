@@ -1,36 +1,40 @@
 ---
-streams:
-    - edu
+-
+  - edu
+      -
         - 2001
+          -
             - university of springfield
             - master of computer science
         - 2005
+          -
             - sun / oracle
             - java certified programmer
         - 2010
+          -
             - cisco
             - certified network associate
         - 2016
             - aws
             - certified solution architect
-    - dev:
-        - 2002
-            - my first company
-            - junior software developer
-        - 2005
-            - my second company
-            - software developer
-        - 2012
-            - my third company
-            - senior software engineer
-    - mobile
-        - 2013
-            - a mobile company
-            - android developer
-    - devops
-        - 2015
-            - a devops company
-            - devops engineer
-        - 2016
-            - another devops company
-            - senior devops engineer
+  - dev
+      - 2002
+          - my first company
+          - junior software developer
+      - 2005
+          - my second company
+          - software developer
+      - 2012
+          - my third company
+          - senior software engineer
+  - mobile
+      - 2013
+          - a mobile company
+          - android developer
+  - devops
+      - 2015
+          - a devops company
+          - devops engineer
+      - 2016
+          - another devops company
+          - senior devops engineer
