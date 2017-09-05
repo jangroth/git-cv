@@ -1,1 +1,1 @@
-# TODO
+# Travis CI Status [![Build Status](https://travis-ci.org/jangroth/git-cv.svg?branch=master)](https://travis-ci.org/jangroth/git-cv.svg)
