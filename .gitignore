@@ -1,2 +1,8 @@
 .idea/*
+.cache/
+.eggs/
+dist/
 venv/
+gitcv.egg-info/
+gitcv/__pycache__/
+tests/__pycache__/
