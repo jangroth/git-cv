@@ -7,8 +7,7 @@ from git import Repo
 class GitCv:
     def __init__(self, cv_path, repo_path):
         self._cv = self._load_cv(cv_path)
-        self._repo_path = repo_path
-        self._repo_name = 'cv'
+        self._repo_path = os.path.join(repo_path, 'cv')
 
     def _load_cv(self, cv_path):
         with open(cv_path, "r") as f:
@@ -16,8 +15,7 @@ class GitCv:
         return cv
 
     def _create_repo(self):
-        repo_path = os.path.join(self._repo_path, self._repo_name)
-        self._repo = Repo.init(repo_path)
+        self._repo = Repo.init(self._repo_path)
 
     def _create_branches(self):
         for stream in self._cv:
@@ -28,7 +26,7 @@ class GitCv:
         self._repo.create_head(branch_name)
 
     def _create_file_and_commit(self, file_name):
-        open(os.path.join(self._repo_path, self._repo_name, file_name), 'wb').close()
+        open(os.path.join(self._repo_path, file_name), 'w').close()
         self._repo.index.add([file_name])
         self._repo.index.commit('Add {0}'.format(file_name))
 
