@@ -6,13 +6,13 @@ from git import Repo
 
 class GitCv:
     def __init__(self, cv_path, repo_path):
-        self._cv = self._load_cv(cv_path)
         self._repo_path = os.path.join(repo_path, 'cv')
+        self._cv_path = cv_path
+        self._load_cv()
 
-    def _load_cv(self, cv_path):
-        with open(cv_path, "r") as f:
-            cv = yaml.load(f)
-        return cv
+    def _load_cv(self):
+        with open(self._cv_path, "r") as f:
+            self._cv = yaml.load(f)
 
     def _create_repo(self):
         self._repo = Repo.init(self._repo_path)
