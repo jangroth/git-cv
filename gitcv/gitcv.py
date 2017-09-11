@@ -11,7 +11,7 @@ class GitCv:
         self._load_cv()
 
     def _load_cv(self):
-        with open(self._cv_path, "r") as f:
+        with open(self._cv_path, 'r') as f:
             self._cv = yaml.load(f)
 
     def _create_repo(self):
@@ -25,14 +25,20 @@ class GitCv:
     def _create_branch(self, branch_name):
         self._repo.create_head(branch_name)
 
-    def _create_file_and_commit(self, file_name):
-        open(os.path.join(self._repo_path, file_name), 'w').close()
+    def _create_or_append(self, file_name, content):
+        path_and_file_name = os.path.join(self._repo_path, file_name)
+        write_or_append = 'w' if not os.path.exists(path_and_file_name) else 'a'
+        with open(path_and_file_name, write_or_append) as f:
+            f.writelines(content)
+
+    def _commit_file(self, file_name):
         self._repo.index.add([file_name])
         self._repo.index.commit('Add {0}'.format(file_name))
 
     def create(self):
         self._create_repo()
-        self._create_file_and_commit('dummy.txt')
+        self._create_or_append('dummy.txt', 'test')
+        self._commit_file('dummy.txt')
         self._create_branches()
 
 
