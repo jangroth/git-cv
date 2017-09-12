@@ -5,17 +5,17 @@ from git import Repo
 
 
 class GitCv:
-    def __init__(self, cv_path, repo_path):
-        self._repo_path = os.path.join(repo_path, 'cv')
+    def __init__(self, cv_path, work_dir):
+        self._repo_dir = os.path.join(work_dir, 'cv')
         self._cv_path = cv_path
-        self._load_cv()
+        self._cv = self._load_cv()
 
     def _load_cv(self):
         with open(self._cv_path, 'r') as f:
-            self._cv = yaml.load(f)
+            return yaml.load(f)
 
     def _create_repo(self):
-        self._repo = Repo.init(self._repo_path)
+        self._repo = Repo.init(self._repo_dir)
 
     def _create_branches(self):
         for stream in self._cv:
@@ -26,7 +26,7 @@ class GitCv:
         self._repo.create_head(branch_name)
 
     def _create_or_append(self, file_name, content):
-        path_and_file_name = os.path.join(self._repo_path, file_name)
+        path_and_file_name = os.path.join(self._repo_dir, file_name)
         write_or_append = 'w' if not os.path.exists(path_and_file_name) else 'a'
         with open(path_and_file_name, write_or_append) as f:
             f.writelines(content)
