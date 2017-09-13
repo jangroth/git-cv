@@ -13,12 +13,12 @@ class GitcvTest(unittest.TestCase):
     def tearDown(self):
         shutil.rmtree(self._temp_dir)
 
-    def atest_should_read_simple_cv(self):
+    def test_should_read_simple_cv(self):
         cv = self._setup_gitcv()._cv
 
         self.assertEqual(cv[0]['education'][0]['year'], 2001)
 
-    def atest_should_create_empty_repo(self):
+    def test_should_create_empty_repo(self):
         gitcv = self._setup_gitcv()
 
         gitcv.create()
@@ -35,7 +35,7 @@ class GitcvTest(unittest.TestCase):
         commit = repo.active_branch.commit
         self.assertEqual(commit.message, 'First commit')
 
-    def atest_should_create_branch_per_stream(self):
+    def test_should_create_branch_per_stream(self):
         gitcv = self._setup_gitcv()
 
         gitcv.create()
@@ -44,7 +44,7 @@ class GitcvTest(unittest.TestCase):
         self.assertEqual(len(repo.branches), 2)
         self.assertTrue('education' in repo.branches)
 
-    def atest_should_create_file_if_it_doesnt_already_exist(self):
+    def test_should_create_file_if_it_doesnt_already_exist(self):
         gitcv = self._setup_gitcv()
         gitcv._repo_dir = self._temp_dir
 
@@ -54,7 +54,7 @@ class GitcvTest(unittest.TestCase):
             lines = f.readlines()
         self.assertEqual(lines[0], 'test')
 
-    def atest_should_append_to_file_if_it_already_exists(self):
+    def test_should_append_to_file_if_it_already_exists(self):
         gitcv = self._setup_gitcv()
         gitcv._repo_dir = self._temp_dir
 
@@ -65,7 +65,7 @@ class GitcvTest(unittest.TestCase):
             lines = f.readlines()
         self.assertEqual(lines[0], 'foobar')
 
-    def atest_should_create_file_per_branch(self):
+    def test_should_create_file_per_branch(self):
         gitcv = self._setup_gitcv()
 
         gitcv.create()
@@ -74,7 +74,7 @@ class GitcvTest(unittest.TestCase):
             lines = f.readlines()
         self.assertEqual(lines[0], '2001: MIT - CS\n')
 
-    def atest_should_add_commits_to_file(self):
+    def test_should_add_commits_to_file(self):
         gitcv = self._setup_gitcv('complex.yaml')
 
         gitcv.create()

@@ -1,4 +1,5 @@
 import os
+import shutil
 
 import yaml
 from git import Repo
@@ -37,16 +38,17 @@ class GitCv:
     def _to_text(self, commit):
         return '{0}: {1} - {2}\n'.format(commit['year'], commit['where'], commit['what'])
 
-    def _commit_file(self, file_name):
+    def _commit_file(self, file_name, commit_message):
         self._repo.index.add([file_name])
-        self._repo.index.commit('Add {0}'.format(file_name))
+        self._repo.index.commit(commit_message)
+
+    def _commit_cv(self):
+        shutil.copy(self._cv_path, self._repo_dir)
+        self._commit_file(os.path.basename(self._cv_path), 'First commit')
 
     def create(self):
         self._create_repo()
-        self._create_or_append('dummy.txt', 'test')
-        self._commit_file('dummy.txt')
-        self._create_or_append('dummy2.txt', 'test2')
-        self._commit_file('dummy2.txt')
+        self._commit_cv()
         self._create_branches()
 
 
