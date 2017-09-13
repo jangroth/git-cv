@@ -1,0 +1,20 @@
+---
+-
+  baz:
+    -
+      year: 2010
+      where: Loo
+      what: Laa
+    -
+      year: 2012
+      where: Lum
+      what: Lak
+  bar:
+    -
+      year: 2010
+      where: Gri
+      what: Gor
+    -
+      year: 2012
+      where: Gol
+      what: Gil

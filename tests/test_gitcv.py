@@ -80,9 +80,25 @@ class GitcvTest(unittest.TestCase):
         # verify
         with open(os.path.join(gitcv._repo_dir, 'education'), 'r') as f:
             lines = f.readlines()
-        self.assertEqual(lines[0], '2001: MIT - CS')
+        self.assertEqual(lines[0], '2001: MIT - CS\n')
 
-    def _setup_gitcv(self, file_name='simple_cv.yaml'):
+    def test_should_add_commits_to_file(self):
+        # setup
+        gitcv = self._setup_gitcv('complex.yaml')
+
+        # exercise
+        gitcv.create()
+
+        # verify
+        with open(os.path.join(gitcv._repo_dir, 'bar'), 'r') as f:
+            lines = f.readlines()
+        self.assertEqual(lines[0], '2010: Gri - Gor\n')
+        self.assertEqual(lines[1], '2012: Gol - Gil\n')
+
+    def test_should_create_commit(self):
+        pass
+
+    def _setup_gitcv(self, file_name='simple.yaml'):
         return GitCv(self._get_absolute_resource_path(file_name), self._temp_dir)
 
     def _get_absolute_resource_path(self, file_name):

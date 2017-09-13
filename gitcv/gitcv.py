@@ -32,10 +32,10 @@ class GitCv:
         path_and_file_name = os.path.join(self._repo_dir, file_name)
         write_or_append = 'w' if not os.path.exists(path_and_file_name) else 'a'
         with open(path_and_file_name, write_or_append) as f:
-            f.writelines(str(content))
+            f.writelines(content)
 
     def _to_text(self, commit):
-        return '{0}: {1} - {2}'.format(commit['year'], commit['where'], commit['what'])
+        return '{0}: {1} - {2}\n'.format(commit['year'], commit['where'], commit['what'])
 
     def _commit_file(self, file_name):
         self._repo.index.add([file_name])
