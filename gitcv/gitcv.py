@@ -45,6 +45,8 @@ class GitCv:
         self._create_repo()
         self._create_or_append('dummy.txt', 'test')
         self._commit_file('dummy.txt')
+        self._create_or_append('dummy2.txt', 'test2')
+        self._commit_file('dummy2.txt')
         self._create_branches()
 
 
