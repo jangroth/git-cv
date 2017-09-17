@@ -32,7 +32,7 @@ class GitcvTest(unittest.TestCase):
         gitcv.create()
 
         repo = gitcv._repo
-        commit = repo.active_branch.commit
+        repo = gitcv._repo
         self.assertEqual(commit.message, 'First commit')
 
     def test_should_create_branch_per_stream(self):
@@ -74,7 +74,7 @@ class GitcvTest(unittest.TestCase):
             lines = f.readlines()
         self.assertEqual(lines[0], '2001: MIT - CS\n')
 
-    def test_should_add_commits_to_file(self):
+    def test_should_create_files_line_by_line(self):
         gitcv = self._setup_gitcv('complex.yaml')
 
         gitcv.create()
@@ -83,9 +83,23 @@ class GitcvTest(unittest.TestCase):
             lines = f.readlines()
         self.assertEqual(lines[0], '2010: Gri - Gor\n')
         self.assertEqual(lines[1], '2012: Gol - Gil\n')
-        
+        with open(os.path.join(gitcv._repo_dir, 'baz'), 'r') as f:
+            lines = f.readlines()
+        self.assertEqual(lines[0], '2009: Loo - Laa\n')
+        self.assertEqual(lines[1], '2011: Lum - Lak\n')
+
+    def test_should_create_commits(self):
+        gitcv = self._setup_gitcv('complex.yaml')
+
+        gitcv.create()
+
+        repo = gitcv._repo
+        repo.heads[0].checkout()
+        commits = list(repo.iter_commits())
+        self.assertEqual(len(commits), 2)
 
     def _setup_gitcv(self, file_name='simple.yaml'):
+        print("*** creating repo at {}".format(self._temp_dir))
         return GitCv(self._get_absolute_resource_path(file_name), self._temp_dir)
 
     def _get_absolute_resource_path(self, file_name):

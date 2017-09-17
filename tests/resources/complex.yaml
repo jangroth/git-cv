@@ -1,20 +1,16 @@
 ---
 -
   baz:
-    -
-      year: 2010
-      where: Loo
-      what: Laa
-    -
-      year: 2012
-      where: Lum
-      what: Lak
+    - Laa
+        year: 2009
+        where: Loo
+    - Lak
+        year: 2011
+        where: Lum
   bar:
-    -
-      year: 2010
-      where: Gri
-      what: Gor
-    -
-      year: 2012
-      where: Gol
-      what: Gil
+    - Gor
+        year: 2010
+        where: Gri
+    - Gil
+        year: 2012
+        where: Gol

@@ -9,6 +9,7 @@ class GitCv:
     def __init__(self, cv_path, work_dir):
         self._repo_dir = os.path.join(work_dir, 'cv')
         self._cv_path = cv_path
+        # TODO: Move into create() method?
         self._cv = self._load_cv()
 
     def _load_cv(self):
@@ -20,11 +21,12 @@ class GitCv:
 
     def _create_branches(self):
         for stream in self._cv:
-            for branch in stream:
-                self._create_branch(branch)
-                for commit in stream[branch]:
+            for branch_name in stream:
+                self._create_branch(branch_name)
+                for commit in stream[branch_name]:
                     message = self._to_text(commit)
-                    self._create_or_append(branch, message)
+                    self._create_or_append(branch_name, message)
+                    self._commit_file(branch_name, message)
 
     def _create_branch(self, branch_name):
         self._repo.create_head(branch_name)

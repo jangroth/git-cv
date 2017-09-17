@@ -6,3 +6,4 @@ venv/
 gitcv.egg-info/
 gitcv/__pycache__/
 tests/__pycache__/
+testrepo/

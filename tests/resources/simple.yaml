@@ -1,7 +1,6 @@
 ---
 -
   education:
-    -
-      year: 2001
-      where: MIT
-      what: CS
+    - CS
+        year: 2001
+        where: MIT
