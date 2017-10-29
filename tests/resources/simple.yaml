@@ -1,6 +1,9 @@
 ---
 -
-  education:
-    - CS
-        year: 2001
-        where: MIT
+  branch:
+    -
+      commit:
+        year: date
+        what: subject
+          - note1
+          - note2

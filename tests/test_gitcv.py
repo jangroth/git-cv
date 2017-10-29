@@ -32,7 +32,6 @@ class GitcvTest(unittest.TestCase):
         gitcv.create()
 
         repo = gitcv._repo
-        repo = gitcv._repo
         self.assertEqual(commit.message, 'First commit')
 
     def test_should_create_branch_per_stream(self):

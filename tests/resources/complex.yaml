@@ -4,13 +4,17 @@
     - Laa
         year: 2009
         where: Loo
+        what: Lef
     - Lak
         year: 2011
         where: Lum
+        what: Lut
   bar:
     - Gor
         year: 2010
         where: Gri
+        what: Gori
     - Gil
         year: 2012
         where: Gol
+        what: Golo
