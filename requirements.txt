@@ -6,7 +6,7 @@ GitPython==2.1.5
 idna==2.6
 py==1.4.34
 pytest==3.2.1
-PyYAML==3.12
+PyYAML==5.4
 repo==0.1.0
 requests==2.18.4
 six==1.10.0
